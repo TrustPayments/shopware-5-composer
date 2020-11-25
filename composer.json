@@ -1,0 +1,25 @@
+{
+	"name" : "trustpayments/shopware-5",
+	"description" : "Trust Payments integration for Shopware 5",
+	"keywords" : [
+		"Trust Payments",
+		"payment",
+		"php",
+		"shopware"
+	],
+	"homepage" : "https://www.trustpayments.com//",
+	"license" : "Apache-2.0",
+	"authors" : [{
+			"name" : "wallee AG",
+			"homepage" : "https://www.wallee.com"
+		}
+	],
+	"type" : "shopware-plugin",
+	"version" : "1.1.0",
+	"require" : {
+		"trustpayments/sdk" : "2.1.4"
+	},
+	"extra" : {
+		"installer-name" : "TrustPaymentsPayment"
+	}
+}

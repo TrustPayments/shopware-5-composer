@@ -1,0 +1,45 @@
+<?php
+
+/**
+ * Trust Payments Shopware 5
+ *
+ * This Shopware 5 extension enables to process payments with Trust Payments (https://www.trustpayments.com//).
+ *
+ * @package TrustPayments_Payment
+ * @author wallee AG (http://www.wallee.com/)
+ * @license http://www.apache.org/licenses/LICENSE-2.0  Apache Software License (ASL 2.0)
+ */
+
+use TrustPaymentsPayment\Components\Controller\Backend;
+
+class Shopware_Controllers_Backend_TrustPaymentsPaymentManualTasksWidget extends Backend
+{
+    public function infoAction()
+    {
+        $numberOfManualTasks = $this->get('trustpayments_payment.manual_task')->getNumberOfManualTasks();
+        $totalNumber = array_sum($numberOfManualTasks);
+        $this->View()->assign(array(
+            'success' => true,
+            'data' => array(
+                'success' => true,
+                'number' => $totalNumber,
+                'detailUrl' => $this->getManualTasksUrl(count($numberOfManualTasks) == 1 ? key($numberOfManualTasks) : null)
+            )
+        ));
+    }
+
+    /**
+     * Returns the URL to check the open manual tasks.
+     *
+     * @return string
+     */
+    private function getManualTasksUrl($spaceId)
+    {
+        $manualTaskUrl = $this->container->getParameter('trust_payments_payment.base_gateway_url');
+        if ($spaceId != null) {
+            $manualTaskUrl .= '/s/' . $spaceId . '/manual-task/list';
+        }
+
+        return $manualTaskUrl;
+    }
+}

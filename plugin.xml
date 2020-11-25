@@ -1,0 +1,23 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!--
+/**
+ * Trust Payments Shopware 5
+ *
+ * This Shopware 5 extension enables to process payments with Trust Payments (https://www.trustpayments.com//).
+ *
+ * @package TrustPayments_Payment
+ * @author wallee AG (http://www.wallee.com/)
+ * @license http://www.apache.org/licenses/LICENSE-2.0  Apache Software License (ASL 2.0)
+ */
+-->
+<plugin xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="https://raw.githubusercontent.com/shopware/shopware/5.2/engine/Shopware/Components/Plugin/schema/plugin.xsd">
+    <label lang="de">Trust Payments Payment</label>
+    <label lang="en">Trust Payments Payment</label>
+
+    <version>1.1.0</version>
+    <copyright>(c) by wallee AG</copyright>
+    <license>ASL 2.0</license>
+    <link>https://www.trustpayments.com/</link>
+    <author>wallee AG</author>
+    <compatibility minVersion="5.2.0" />
+</plugin>
