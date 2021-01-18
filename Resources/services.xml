@@ -74,26 +74,26 @@
         </service>
         
         <service id="trustpayments_payment.resource" class="TrustPaymentsPayment\Components\Resource">
-        		<argument type="service" id="trustpayments_payment.provider.language" />
+       		<argument type="service" id="trustpayments_payment.provider.language" />
             <argument type="string">%trust_payments_payment.base_gateway_url%</argument>
         </service>
         
         <service id="trustpayments_payment.transaction_info" class="TrustPaymentsPayment\Components\TransactionInfo">
-	        	<argument type="service" id="service_container" />
-	        	<argument type="service" id="models" />
-	        	<argument type="service" id="shopware.plugin.config_reader" />
-	        	<argument type="service" id="trustpayments_payment.api_client" />
+        	<argument type="service" id="service_container" />
+        	<argument type="service" id="models" />
+        	<argument type="service" id="shopware.plugin.config_reader" />
+        	<argument type="service" id="trustpayments_payment.api_client" />
         </service>
         
         <service id="trustpayments_payment.transaction" class="TrustPaymentsPayment\Components\Transaction">
             <argument type="service" id="service_container" />
-	        	<argument type="service" id="models" />
-	        	<argument type="service" id="shopware.plugin.config_reader" />
-	        	<argument type="service" id="trustpayments_payment.api_client" />
-	        	<argument type="service" id="trustpayments_payment.line_item" />
-	        	<argument type="service" id="trustpayments_payment.payment_method_configuration" />
-	        	<argument type="service" id="trustpayments_payment.transaction_info" />
-	        	<argument type="service" id="trustpayments_payment.session" />
+        	<argument type="service" id="models" />
+        	<argument type="service" id="shopware.plugin.config_reader" />
+        	<argument type="service" id="trustpayments_payment.api_client" />
+        	<argument type="service" id="trustpayments_payment.line_item" />
+        	<argument type="service" id="trustpayments_payment.payment_method_configuration" />
+        	<argument type="service" id="trustpayments_payment.transaction_info" />
+        	<argument type="service" id="trustpayments_payment.session" />
         </service>
         
         <service id="trustpayments_payment.registry" class="TrustPaymentsPayment\Components\Registry">
@@ -102,38 +102,39 @@
         
         <service id="trustpayments_payment.session" class="TrustPaymentsPayment\Components\Session">
             <argument type="service" id="service_container" />
-        		<argument type="service" id="models" />
+       		<argument type="service" id="models" />
         </service>
         
         <service id="trustpayments_payment.basket" class="TrustPaymentsPayment\Components\Basket">
             <argument type="service" id="service_container" />
-	        	<argument type="service" id="dbal_connection" />
-	        	<argument type="service" id="trustpayments_payment.session" />
+        	<argument type="service" id="dbal_connection" />
+        	<argument type="service" id="trustpayments_payment.session" />
         </service>
         
         <service id="trustpayments_payment.refund" class="TrustPaymentsPayment\Components\Refund">
             <argument type="service" id="service_container" />
-	        	<argument type="service" id="models" />
-	        	<argument type="service" id="trustpayments_payment.api_client" />
+        	<argument type="service" id="models" />
+        	<argument type="service" id="trustpayments_payment.api_client" />
         </service>
         
         <service id="trustpayments_payment.invoice" class="TrustPaymentsPayment\Components\Invoice">
             <argument type="service" id="service_container" />
-	        	<argument type="service" id="models" />
-	        	<argument type="service" id="trustpayments_payment.api_client" />
+        	<argument type="service" id="models" />
+        	<argument type="service" id="trustpayments_payment.api_client" />
         </service>
         
         <service id="trustpayments_payment.webhook" class="TrustPaymentsPayment\Components\Webhook">
             <argument type="service" id="service_container" />
             <argument type="service" id="models" />
             <argument type="service" id="shopware.plugin.config_reader" />
-        		<argument type="service" id="trustpayments_payment.api_client" />
+       		<argument type="service" id="trustpayments_payment.api_client" />
         </service>
         
         <service id="trustpayments_payment.line_item" class="TrustPaymentsPayment\Components\LineItem">
             <argument type="service" id="service_container" />
-	        	<argument type="service" id="models" />
-	        	<argument type="service" id="trustpayments_payment.provider.currency" />
+        	<argument type="service" id="models" />
+        	<argument type="service" id="trustpayments_payment.provider.currency" />
+        	<argument type="service" id="shopware.plugin.config_reader" />
         </service>
         
         <service id="trustpayments_payment.payment_method_configuration" class="TrustPaymentsPayment\Components\PaymentMethodConfiguration">
@@ -149,10 +150,10 @@
         
          <service id="trustpayments_payment.payment" class="TrustPaymentsPayment\Components\Payment">
             <argument type="service" id="service_container" />
-	        	<argument type="service" id="trustpayments_payment.transaction" />
-	        	<argument type="service" id="trustpayments_payment.invoice" />
-	        	<argument type="service" id="trustpayments_payment.subscriber.webhook.transaction" />
-	        	<argument type="service" id="trustpayments_payment.subscriber.webhook.transaction_invoice" />
+        	<argument type="service" id="trustpayments_payment.transaction" />
+        	<argument type="service" id="trustpayments_payment.invoice" />
+        	<argument type="service" id="trustpayments_payment.subscriber.webhook.transaction" />
+        	<argument type="service" id="trustpayments_payment.subscriber.webhook.transaction_invoice" />
         </service>
         
         <!-- Subscribers -->
@@ -160,27 +161,27 @@
         <service id="trustpayments_payment.subscriber.order" class="TrustPaymentsPayment\Subscriber\Order">
             <argument type="service" id="service_container" />
             <argument type="service" id="shopware.plugin.config_reader" />
-	        	<argument type="service" id="models" />
-	        	<argument type="service" id="trustpayments_payment.transaction" />
-	        	<argument type="service" id="trustpayments_payment.transaction_info" />
-	        	<argument type="service" id="trustpayments_payment.session" />
-	        	<argument type="service" id="trustpayments_payment.registry" />
+        	<argument type="service" id="models" />
+        	<argument type="service" id="trustpayments_payment.transaction" />
+        	<argument type="service" id="trustpayments_payment.transaction_info" />
+        	<argument type="service" id="trustpayments_payment.session" />
+        	<argument type="service" id="trustpayments_payment.registry" />
             <tag name="shopware.event_subscriber" />
         </service>
         
         <service id="trustpayments_payment.subscriber.account" class="TrustPaymentsPayment\Subscriber\Account">
             <argument type="service" id="service_container" />
             <argument type="service" id="shopware.plugin.config_reader" />
-	        	<argument type="service" id="models" />
-	        	<argument type="service" id="trustpayments_payment.transaction_info" />
+        	<argument type="service" id="models" />
+        	<argument type="service" id="trustpayments_payment.transaction_info" />
             <tag name="shopware.event_subscriber" />
         </service>
         
         <service id="trustpayments_payment.subscriber.checkout" class="TrustPaymentsPayment\Subscriber\Checkout">
             <argument type="service" id="service_container" />
-	        	<argument type="service" id="models" />
-	        	<argument type="service" id="trustpayments_payment.transaction" />
-	        	<argument type="service" id="trustpayments_payment.session" />
+        	<argument type="service" id="models" />
+        	<argument type="service" id="trustpayments_payment.transaction" />
+        	<argument type="service" id="trustpayments_payment.session" />
             <tag name="shopware.event_subscriber" />
         </service>
         
@@ -195,20 +196,20 @@
         </service>
         
         <service id="trustpayments_payment.subscriber.risk_management" class="TrustPaymentsPayment\Subscriber\RiskManagement">
-	        	<argument type="service" id="service_container" />
-	        	<argument type="service" id="models" />
-	        	<argument type="service" id="shopware.plugin.config_reader" />
-	        	<argument type="service" id="trustpayments_payment.transaction" />
-	        	<argument type="service" id="trustpayments_payment.session" />
-	        	<argument type="service" id="trustpayments_payment.registry" />
-	        	<argument type="service" id="corelogger" />
-	        	<tag name="shopware.event_subscriber" />
+        	<argument type="service" id="service_container" />
+        	<argument type="service" id="models" />
+        	<argument type="service" id="shopware.plugin.config_reader" />
+        	<argument type="service" id="trustpayments_payment.transaction" />
+        	<argument type="service" id="trustpayments_payment.session" />
+        	<argument type="service" id="trustpayments_payment.registry" />
+        	<argument type="service" id="corelogger" />
+        	<tag name="shopware.event_subscriber" />
         </service>
         
         <service id="trustpayments_payment.subscriber.backend" class="TrustPaymentsPayment\Subscriber\Backend">
-	        	<argument type="service" id="service_container" />
-	        	<argument type="service" id="models" />
-	        	<tag name="shopware.event_subscriber" />
+        	<argument type="service" id="service_container" />
+        	<argument type="service" id="models" />
+        	<tag name="shopware.event_subscriber" />
         </service>
         
         <service id="trustpayments_payment.subscriber.theme" class="TrustPaymentsPayment\Subscriber\Theme">
@@ -219,8 +220,8 @@
         <!-- Webhook Subscribers -->
         
         <service id="trustpayments_payment.subscriber.webhook.transaction" class="TrustPaymentsPayment\Subscriber\Webhook\Transaction">
-	        	<argument type="service" id="service_container" />
-	        	<argument type="service" id="shopware.plugin.config_reader" />
+        	<argument type="service" id="service_container" />
+        	<argument type="service" id="shopware.plugin.config_reader" />
             <argument type="service" id="models" />
             <argument type="service" id="trustpayments_payment.transaction" />
             <argument type="service" id="trustpayments_payment.transaction_info" />

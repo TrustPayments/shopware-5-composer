@@ -10,7 +10,7 @@ This repository contains the Shopware 5 plugin that enables to process payments 
 
 ## Documentation
 
-* [Documentation](https://plugin-documentation.ep.trustpayments.com/TrustPayments/shopware-5-composer/1.1.0/docs/en/documentation.html)
+* [Documentation](https://plugin-documentation.ep.trustpayments.com/TrustPayments/shopware-5-composer/1.1.1/docs/en/documentation.html)
 
 ## Support
 
@@ -18,4 +18,4 @@ Support queries can be issued on the [Trust Payments support site](https://www.t
 
 ## License
 
-Please see the [license file](https://github.com/TrustPayments/shopware-5-composer/blob/1.1.0/LICENSE) for more information.
+Please see the [license file](https://github.com/TrustPayments/shopware-5-composer/blob/1.1.1/LICENSE) for more information.
