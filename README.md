@@ -1,3 +1,5 @@
+> This plugin supports the Trust Enterprise Platform which can be identified by the URL for the platform ep.trustpayments.com.
+
 # Trust Payments Shopware 5
 This repository contains the Shopware 5 plugin that enables to process payments with [Trust Payments](https://www.trustpayments.com//).
 
@@ -10,7 +12,7 @@ This repository contains the Shopware 5 plugin that enables to process payments 
 
 ## Documentation
 
-* [Documentation](https://plugin-documentation.ep.trustpayments.com/TrustPayments/shopware-5-composer/1.1.2/docs/en/documentation.html)
+* [Documentation](https://plugin-documentation.ep.trustpayments.com/TrustPayments/shopware-5-composer/1.1.3/docs/en/documentation.html)
 
 ## Support
 
@@ -18,4 +20,4 @@ Support queries can be issued on the [Trust Payments support site](https://www.t
 
 ## License
 
-Please see the [license file](https://github.com/TrustPayments/shopware-5-composer/blob/1.1.2/LICENSE) for more information.
+Please see the [license file](https://github.com/TrustPayments/shopware-5-composer/blob/1.1.3/LICENSE) for more information.
