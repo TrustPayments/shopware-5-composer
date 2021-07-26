@@ -12,18 +12,19 @@
 
 namespace TrustPaymentsPayment\Subscriber\Webhook;
 
-use TrustPaymentsPayment\Components\Webhook\Request as WebhookRequest;
+use Psr\Log\LoggerInterface;
 use Shopware\Components\Model\ModelManager;
+use Shopware\Components\Plugin\ConfigReader;
+use Shopware\Components\ShopRegistrationServiceInterface;
 use Shopware\Models\Order\Order;
-use TrustPaymentsPayment\Models\TransactionInfo;
-use TrustPaymentsPayment\Components\Transaction as TransactionService;
-use TrustPaymentsPayment\Components\TransactionInfo as TransactionInfoService;
 use Shopware\Models\Order\Status;
-use TrustPaymentsPayment\Models\OrderTransactionMapping;
 use Symfony\Component\DependencyInjection\ContainerInterface;
 use TrustPaymentsPayment\Components\Registry;
-use Shopware\Components\Plugin\ConfigReader;
-use Psr\Log\LoggerInterface;
+use TrustPaymentsPayment\Components\Transaction as TransactionService;
+use TrustPaymentsPayment\Components\TransactionInfo as TransactionInfoService;
+use TrustPaymentsPayment\Components\Webhook\Request as WebhookRequest;
+use TrustPaymentsPayment\Models\OrderTransactionMapping;
+use TrustPaymentsPayment\Models\TransactionInfo;
 
 class Transaction extends AbstractOrderRelatedSubscriber
 {
@@ -69,17 +70,32 @@ class Transaction extends AbstractOrderRelatedSubscriber
      */
     private $logger;
 
-    /**
-     *
-     * @param ContainerInterface $container
-     * @param ConfigReader $configReader
-     * @param ModelManager $modelManager
-     * @param TransactionService $transactionService
-     * @param TransactionInfoService $transactionInfoService
-     * @param Registry $registry
-     * @param LoggerInterface $logger
-     */
-    public function __construct(ContainerInterface $container, ConfigReader $configReader, ModelManager $modelManager, TransactionService $transactionService, TransactionInfoService $transactionInfoService, Registry $registry, LoggerInterface $logger)
+	/**
+	 * @var \Shopware\Components\ShopRegistrationServiceInterface
+	 */
+    protected $shopRegistrationService;
+
+	/**
+	 *
+	 * @param ContainerInterface                                    $container
+	 * @param ConfigReader                                          $configReader
+	 * @param ModelManager                                          $modelManager
+	 * @param TransactionService                                    $transactionService
+	 * @param TransactionInfoService                                $transactionInfoService
+	 * @param Registry                                              $registry
+	 * @param \Shopware\Components\ShopRegistrationServiceInterface $shopRegistrationService
+	 * @param LoggerInterface                                       $logger
+	 */
+    public function __construct(
+    	ContainerInterface $container,
+		ConfigReader $configReader,
+		ModelManager $modelManager,
+		TransactionService $transactionService,
+		TransactionInfoService $transactionInfoService,
+		Registry $registry,
+		ShopRegistrationServiceInterface $shopRegistrationService,
+		LoggerInterface $logger
+	)
     {
         parent::__construct($modelManager);
         $this->container = $container;
@@ -88,7 +104,8 @@ class Transaction extends AbstractOrderRelatedSubscriber
         $this->transactionInfoService = $transactionInfoService;
         $this->registry = $registry;
         $this->logger = $logger;
-    }
+		$this->shopRegistrationService = $shopRegistrationService;
+	}
 
     /**
      *
@@ -288,7 +305,7 @@ class Transaction extends AbstractOrderRelatedSubscriber
         $shopBackup = $this->container->get('shop', ContainerInterface::NULL_ON_INVALID_REFERENCE);
         
         $shop = $order->getLanguageSubShop();
-        $shop->registerResources();
+        $this->shopRegistrationService->registerResources($shop);
         
         $pluginConfig = $this->configReader->getByPluginName('TrustPaymentsPayment', $order->getShop());
         $sendOrderEmail = $pluginConfig['orderEmail'];
@@ -309,7 +326,7 @@ class Transaction extends AbstractOrderRelatedSubscriber
         }
         
         if ($shopBackup != null) {
-            $shopBackup->registerResources();
+			$this->shopRegistrationService->registerResources($shop);
         }
     }
 }
