@@ -11,30 +11,30 @@
 //{block name="backend/trustpayments_payment_refund/controller/main"}
 //{namespace name=backend/trustpayments_payment/main}
 Ext.define('Shopware.apps.TrustPaymentsPaymentRefund.controller.Main', {
-    
+
     extend: 'Ext.app.Controller',
-    
+
     views: [ 'main.Window', 'main.Form' ],
-    
+
     refs: [
         { ref: 'refundForm', selector: 'trustpayments-payment-refund-main-form' },
         { ref: 'transactionView', selector: 'trustpayments-payment-transaction-transaction' },
         { ref: 'refundGrid', selector: 'trustpayments-payment-transaction-refunds-grid' }
     ],
-    
+
     snippets: {
         createRefund: {
-            successMessage: '{s name=refund/message/create_success}The refund has been successfully created.{/s}',
-            failureMessage: '{s name=refund/message/create_failure}An error has occurred while creating the refund.{/s}'
+            successMessage: '{s name="refund/message/create_success"}The refund has been successfully created.{/s}',
+            failureMessage: '{s name="refund/message/create_failure"}An error has occurred while creating the refund.{/s}'
         },
-        growlTitle: '{s name=growl_title}Trust Payments Payment{/s}'
+        growlTitle: '{s name="growl_title"}Trust Payments Payment{/s}'
     },
-    
+
     mainWindow: null,
 
     init: function() {
         var me = this;
-        
+
         me.control({
             'trustpayments-payment-refund-main-window button[action=trustpayments-payment-refund-main-window-cancel]': {
                 click: me.onCloseWindow

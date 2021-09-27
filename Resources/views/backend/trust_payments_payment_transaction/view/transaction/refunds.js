@@ -11,27 +11,27 @@
 //{block name="backend/trustpayments_payment_transaction/view/transaction/refunds"}
 //{namespace name=backend/trustpayments_payment/main}
 Ext.define('Shopware.apps.TrustPaymentsPaymentTransaction.view.transaction.Refunds', {
-    
+
     extend: 'Ext.panel.Panel',
-    
+
     alias: 'widget.trustpayments-payment-transaction-refunds',
-    
+
     cls: 'shopware-form',
-    
+
     autoScroll: true,
 
     bodyPadding: 0,
-    
+
     border: 0,
-    
+
     layout: 'fit',
-    
+
     snippets: {
         button: {
-            create: '{s name=refund/button/create}Create Refund{/s}'
+            create: '{s name="refund/button/create"}Create Refund{/s}'
         }
     },
-    
+
     initComponent: function() {
         var me = this;
         me.registerEvents();

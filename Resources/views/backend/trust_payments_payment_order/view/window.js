@@ -18,23 +18,23 @@
 //{$smarty.block.parent}
 //{namespace name=backend/trustpayments_payment/main}
 Ext.define('Shopware.apps.Order.PluginTrustPaymentsPayment.view.window.TransactionTab', {
-    
+
     /**
      * Return order transaction tab.
-     * 
+     *
      * @return Ext.container.Container
      */
     createOrderTransactionTab: function(parent) {
         var me = this,
             storeLoaded = false,
             tabTransactionStore = Ext.create('Shopware.apps.TrustPaymentsPaymentTransaction.store.Transaction');
-        
+
         me.transactionDetails = Ext.create('Shopware.apps.TrustPaymentsPaymentTransaction.view.transaction.Transaction', {
             region: 'center'
         });
-        
+
         parent.orderTransactionsTab = Ext.create('Ext.container.Container', {
-            title: '{s name=order_view/tab/title}Trust Payments Payment{/s}',
+            title: '{s name="order_view/tab/title"}Trust Payments Payment{/s}',
             disabled: parent.record.get('id') === null,
             layout: 'border',
             items: [
